@@ -67,6 +67,8 @@ def get_vector_store(
     )
 
 
+from sqlalchemy.exc import ProgrammingError
+
 def list_sources(
     settings: Settings,
     collection_name: str = "documents",
@@ -89,9 +91,12 @@ def list_sources(
         WHERE c.name = :collection_name
         ORDER BY source
     """)
-    with engine.connect() as conn:
-        rows = conn.execute(query, {"collection_name": collection_name}).fetchall()
-    return [row[0] for row in rows if row[0]]
+    try:
+        with engine.connect() as conn:
+            rows = conn.execute(query, {"collection_name": collection_name}).fetchall()
+        return [row[0] for row in rows if row[0]]
+    except ProgrammingError:
+        return []
 
 
 def delete_by_source(
@@ -125,8 +130,11 @@ def delete_by_source(
           AND c.name = :collection_name
           AND e.cmetadata->>'source' = :source
     """)
-    with engine.begin() as conn:
-        count = conn.execute(count_query, {"collection_name": collection_name, "source": source}).scalar()
-        conn.execute(delete_query, {"collection_name": collection_name, "source": source})
-    return count
+    try:
+        with engine.begin() as conn:
+            count = conn.execute(count_query, {"collection_name": collection_name, "source": source}).scalar()
+            conn.execute(delete_query, {"collection_name": collection_name, "source": source})
+        return count
+    except ProgrammingError:
+        return 0
 
