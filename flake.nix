@@ -32,7 +32,7 @@
 
         VENV=venv
         if test ! -d $VENV; then
-          virtualenv $VENV
+          python -m venv $VENV
         fi
         source ./$VENV/bin/activate
 
