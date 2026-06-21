@@ -49,8 +49,9 @@
         echo "  │  localrag — RAG with PDFs, pgvector & FastFlowLM   │"
         echo "  │                                                    │"
         echo "  │  Commands:                                         │"
+        echo "  │  ragctl --help                                     │"
         echo "  │  ragctl ingest --dir data/pdfs/                    │"
-        echo "  │  ragctl query \"Your question\"                      │"
+        echo "  │  ragctl query \"Your question\"                    │"
         echo "  └────────────────────────────────────────────────────┘"
         echo ""
 
