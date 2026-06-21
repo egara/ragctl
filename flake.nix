@@ -38,8 +38,8 @@
 
         if ! command -v ragctl >/dev/null 2>&1; then
           echo "Installing dependencies from requirements.txt and package..."
-          pip install -r requirements.txt --quiet
-          pip install -e . --quiet
+          pip install -r requirements.txt
+          pip install -e .
         else
           echo "Dependencies and package already installed — skipping pip install"
         fi
