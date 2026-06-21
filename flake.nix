@@ -1,5 +1,5 @@
 {
-  description = "localrag — RAG system with PDF ingestion, pgvector, and FastFlowLM";
+  description = "ragctl — RAG system with PDF ingestion, pgvector, and FastFlowLM";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -28,7 +28,7 @@
       ];
 
       shellHook = ''
-        echo "Entering localrag development environment"
+        echo "Entering ragctl development environment"
 
         VENV=venv
         if test ! -d $VENV; then
@@ -46,12 +46,12 @@
 
         echo ""
         echo "  ┌────────────────────────────────────────────────────┐"
-        echo "  │  localrag — RAG with PDFs, pgvector & FastFlowLM   │"
+        echo "  │  ragctl — RAG with PDFs, pgvector & FastFlowLM   │"
         echo "  │                                                    │"
         echo "  │  Commands:                                         │"
         echo "  │  ragctl --help                                     │"
         echo "  │  ragctl ingest --dir data/pdfs/                    │"
-        echo "  │  ragctl query \"Your question\"                    │"
+        echo "  │  ragctl query \"Your question\"                     │"
         echo "  └────────────────────────────────────────────────────┘"
         echo ""
 
