@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ragctl"
+version = "0.1.0"
+description = "RAG system with PDF ingestion, pgvector vector store, and FastFlowLM inference"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src"]
+
+[project.scripts]
+ragctl = "src.cli:cli"
