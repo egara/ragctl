@@ -131,6 +131,7 @@ ragctl delete --all --yes
 Usage: ragctl [OPTIONS] COMMAND [ARGS]...
 
 Commands:
+  --help     Help
   ingest     Discover PDF, TXT, MD files recursively, then embed and store.
   query      Ask a question against the ingested documents.
   list       List all ingested source files.
@@ -172,7 +173,7 @@ All configuration is managed via environment variables or a `.env` file (copy fr
 ## Project Structure
 
 ```
-localrag/
+ragctl/
 ├── docker-compose.yml       # PostgreSQL + pgvector
 ├── flake.nix                # Nix development shell
 ├── requirements.txt         # Python dependencies
